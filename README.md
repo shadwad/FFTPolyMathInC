@@ -5,6 +5,10 @@ This project was developed by the following group members:
 **Erekle Shatirishvili** - erekle.shatirishvili@etu.sorbonne-universite.fr
 
 # Project: FFTPolyMath in C
+
+> *"The shortest path between two truths in the real domain passes through the complex domain."*
+**Jacques Hadamard**
+
 ## Introduction
 This C-based project aims to implement complex arithmetic, Fast Fourier Transform (FFT), inverse FFT, and polynomial multiplication using naive and FFT-based methods. The project includes a comparative analysis of the efficiency between naive and FFT-based polynomial multiplication algorithms.
 
