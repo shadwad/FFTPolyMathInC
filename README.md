@@ -30,7 +30,7 @@ The project includes a Makefile for effective compilation. Use the following com
 ```bash
 make
 ```
-This command compiles all source files, linking them into an executable named `main`.
+This command compiles all source files, linking them into an executable.
 
 ## Running the Project
 After compilation, execute the following command to run the project:
