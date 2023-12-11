@@ -1,7 +1,10 @@
 ## Contributors
 This project was developed by the following group members:
+
 **Muzhou Wu** - muzhou.wu@etu.sorbonne-universite.fr
+
 **Md Shadnan Azwad Khan** - md_shadnan_azwad.khan@etu.sorbonne-universite.fr
+
 **Erekle Shatirishvili** - erekle.shatirishvili@etu.sorbonne-universite.fr
 
 # Project: FFTPolyMath in C
