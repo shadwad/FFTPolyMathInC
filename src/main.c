@@ -5,7 +5,7 @@
   - Erekle Shatirishvili (erekle.shatirishvili@etu.sorbonne-universite.fr)
 */
 
-#include "testing.h"
+#include "functions.h"
 
 void print_section_header(const char *section_name)
 {
@@ -101,47 +101,29 @@ void perform_complex_arithmetic()
 void perform_fft_and_ifft()
 {
     int size;
-
     printf("Enter the size of the array to be generated for FFT and IFFT: ");
     scanf("%d", &size);
-
     printf("%s\n", "Using random double precision floting point numbers for the array elements...");
 
     int fftSize = get_next_pow2(size);
-
-    Complex *input = (Complex *)malloc(fftSize * sizeof(Complex));
-    Complex *output_fft = (Complex *)malloc(fftSize * sizeof(Complex));
-    Complex *output_ifft = (Complex *)malloc(fftSize * sizeof(Complex));
-
+    Complex input[fftSize];
     for (int i = 0; i < size; ++i)
-    {
-        input[i] = (Complex){((double)rand() / RAND_MAX) * 200 - 100, ((double)rand() / RAND_MAX) * 200 - 100};
-    }
+      input[i] = (Complex){((double)rand() / RAND_MAX) * 200 - 100, ((double)rand() / RAND_MAX) * 200 - 100};
 
     printf("\nInput Vector:\n");
     c_vec_print(input, size);
-
-    fft(input, output_fft, fftSize);
-
+    fft(input, fftSize);
     printf("\nFFT:\n");
-    c_vec_print(output_fft, fftSize);
-
-    ifft(output_fft, output_ifft, fftSize);
-
+    c_vec_print(input, fftSize);
+    ifft(input, fftSize);
     printf("\nIFFT:\n");
-    c_vec_print(output_ifft, fftSize);
-
-    free(input);
-    free(output_fft);
-    free(output_ifft);
+    c_vec_print(input, fftSize);
 }
 
 void perform_poly_multiplication(const char *method_name, int *poly1, int m, int *poly2, int n)
 {
     int result_size = m + n - 1;
     int input_size_max = get_next_pow2((m >= n) ? m : n);
-
-    int result[result_size];
 
     printf("\n%s Polynomial Multiplication:\n", method_name);
 
@@ -151,17 +133,18 @@ void perform_poly_multiplication(const char *method_name, int *poly1, int m, int
     printf("Polynomial 2: ");
     poly_print(poly2, n);
 
-    if (strcmp(method_name, "Naive") == 0)
-    {
-        naive_poly_mul(poly1, m, poly2, n, result);
-    }
-    else if (strcmp(method_name, "FFT") == 0)
-    {
-        fft_poly_mul(poly1, m, poly2, n, result, input_size_max);
-    }
-
     printf("Result of multiplication: ");
-    poly_print(result, result_size);
+    
+    if (strcmp(method_name, "Naive") == 0){
+      int *naive_result = naive_poly_mul(poly1, m, poly2, n);
+      poly_print(naive_result, result_size);
+      free(naive_result);
+    }
+    else if (strcmp(method_name, "FFT") == 0){
+      int *fft_result = fft_poly_mul(poly1, m, poly2, n, input_size_max);
+      poly_print(fft_result, result_size);
+      free(fft_result);
+    }
 }
 
 void perform_testing(int size, bool printPolynomials)
@@ -170,8 +153,7 @@ void perform_testing(int size, bool printPolynomials)
     test_poly_mul(size, printPolynomials);
 }
 
-int main()
-{
+int main(){
     char choice;
 
     print_section_header("Complex Arithmetic:");

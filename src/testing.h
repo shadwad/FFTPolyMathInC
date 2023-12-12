@@ -2,11 +2,7 @@
 
 #include <time.h>
 #include <stdbool.h>
-#include "printoper.h"
-
-// Include your header files
-#include "naivepoly.h"
-#include "fftpoly.h"
+#include "functions.h"
 
 // Function prototypes
 void initialize_polynomial(int *polynomial, int size);
