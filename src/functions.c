@@ -59,8 +59,7 @@ void fft(Complex *x, int n){
   fft(even, half_n);
   fft(odd, half_n);
   for (int k = 0; k < half_n; ++k){
-    double theta = -2 * PI * k / n;
-    Complex t = c_mul((Complex){cos(theta), sin(theta)},  odd[k]);
+    Complex t = c_mul(c_exp((Complex){0, -2 * PI * k / n}),  odd[k]);
     x[k] = c_add(even[k], t);
     x[k + half_n] = c_sub(even[k], t);
   }
@@ -73,7 +72,7 @@ void ifft(Complex *x, int n){
   }
   fft(x, n);
   for (int i = 0; i < n; ++i){
-    x[i].imag *= -1;
+    x[i] = c_conj(x[i]);
     x[i] = c_div(x[i], (Complex){n, 0});
   }
 }
