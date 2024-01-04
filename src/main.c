@@ -243,6 +243,52 @@ int main(){
         scanf(" %c", &choice);
     }
 
+  
+    print_section_header("Benchmarking Polynomial Multiplication:");
+
+    printf("\n%s", "Do you wish to benchmark Naive and FFT Polynomial Multiplication? (y/n): ");
+    scanf(" %c", &choice);
+
+    int n;
+
+    while (choice == 'y' || choice == 'Y'){
+        printf("\n");
+        printf("Enter n for the upper bound 2^n size of polynomials to be benchmarked: ");
+        scanf("%d", &n);
+
+        bool printornot = false;
+
+        for (int i = 1; i <= n; i++){
+            if(i==1){
+                printf("\n");
+                printf("Best case s=2^n: ");
+                perform_testing(pow(2, i), printornot);
+                printf("\n");
+                printf("Average case s= 1.5*2^n = Worst case s=1+2^n:: ");
+                perform_testing(1.5*(pow(2, i)), printornot);
+            } else if (i==n)
+            {
+                printf("\n");
+                printf("Best case s=2^n: ");
+                perform_testing(pow(2, i), printornot);
+            }
+            else {
+                printf("\n");
+                printf("Best case s=2^n: ");
+                perform_testing(pow(2, i), printornot);
+                printf("\n");
+                printf("Worst case s=1+2^n: ");
+                perform_testing(1+pow(2, i), printornot);
+                printf("\n");
+                printf("Average case s= 1.5*2^n = Worst case s=1+2^n:: ");
+                perform_testing(1.5*(pow(2, i)), printornot);
+            }
+        }        
+
+        printf("\n%s", "Do you wish to continue Benchmarking? (y/n): ");
+        scanf(" %c", &choice);
+    }
+
     printf("\n--------------------------------------------------------------------\n");
 
     return 0;
