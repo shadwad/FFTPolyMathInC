@@ -68,7 +68,7 @@ void fft(Complex *x, int n){
 // Function to perform inverse FFT
 void ifft(Complex *x, int n){
   for (int i = 0; i < n; ++i){
-    x[i].imag *= -1;
+    x[i] = c_conj(x[i]);
   }
   fft(x, n);
   for (int i = 0; i < n; ++i){
