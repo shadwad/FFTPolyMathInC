@@ -17,8 +17,8 @@ This C-based project aims to implement complex arithmetic, Fast Fourier Transfor
 
 ## Project Structure
 The project is structured into the following C source files and accompanying header files:
-- **functions.c** and **functions.h**: Defines a `Complex` structure and implements addition, subtraction, multiplication, division, exponentiation, and conjugation functions for complex arithmetic. Implements the Cooley-Tukey radix-2 DIT algorithm for FFT and IFFT functions using the `Complex` structure and other complex number operations. Implements a FFT-based algorithm for polynomial multiplication using the `fft` and `ifft` functions. Implements a naive polynomial multiplication algorithm. Facilitates print operations of complex numbers, vectors, and polynomials.
-- **testing.c** and **testing.h**: Construct test functions evaluating polynomial multiplication efficiency for `naivepoly.c` and `fftpoly.c`.
+- **functions.c** and **functions.h**: Defines a `Complex` structure and implements addition (`c_add`), subtraction (`c_sub`), multiplication (`c_mul`), division (`c_div`), exponentiation (`c_exp`), and conjugation (`c_conj`) functions for complex arithmetic. Implements the Cooley-Tukey radix-2 DIT algorithm for `fft` and `ifft` functions using the `Complex` structure and other complex number operations. Implements a FFT-based algorithm for polynomial multiplication (`fft_poly_mul`) using the `fft` and `ifft` functions. Implements a naive polynomial multiplication algorithm `naive_poly_mul`. Facilitates print operations of complex numbers (`c_print`), complex vectors (`c_vec_print`), and polynomials (`poly_print`).
+- **testing.c** and **testing.h**: Construct test functions evaluating polynomial multiplication efficiency for `naive_poly_mul` and `fft_poly_mul` functions.
 - **main.c**: Serve as the execution script organizing all functionalities.
 
 ## Building the Project
